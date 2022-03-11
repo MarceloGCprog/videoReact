@@ -1,15 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import React from 'react'; // Usado para gerenciar os scripts react
+import ReactDom from 'react-dom'; // Usado para gerenciar a render na DOM dos scripts React
+import SearchBar from './components/search_bar';
+import 'dotenv/config';
+require('dotenv').config();
 
-import App from './components/app';
-import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const api = process.env.API_YOUTUBE_KEY;
+console.log(api);
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+//Create the jsx function
+
+const App = () => {
+    return ( 
+    <div>
+        <SearchBar />        
+    </div>) 
+};
+
+// Render e add no DOM
+
+ReactDom.render(<App />, document.querySelector('.container')); // Procura no DOM a tag Container (index.html
+                                                                //) e insere
+
+
